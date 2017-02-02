@@ -52,6 +52,54 @@ describe "Messages", ->
             expect(-> calledFourTimes.should.not.have.callCount(4)).to
                 .throw("expected spy to not have been called exactly 4 times")
 
+        describe "passing cases", ->
+            beforeEach ->
+                @messages = []
+                chai.use (chai, utils) =>
+                    originalAssert = chai.Assertion::assert
+                    _this = @
+                    chai.Assertion::assert = (args...) ->
+                        _this.messages.push(utils.getMessage(@, args))
+                        originalAssert.apply(@, args)
+
+            it "handles at least once", ->
+                spy = sinon.spy()
+                spy()
+                spy.should.have.been.called
+                expect(@messages[0]).to.equal("expected spy to have been called at least once")
+
+            it "handles once", ->
+                spy = sinon.spy()
+                spy()
+                spy.should.have.been.calledOnce
+                expect(@messages[0]).to.equal("expected spy to have been called exactly once")
+                spy.should.have.callCount(1)
+                expect(@messages[1]).to.equal("expected spy to have been called exactly once")
+
+            it "handles twice", ->
+                spy = sinon.spy()
+                spy()
+                spy()
+                spy.should.have.been.calledTwice
+                expect(@messages[0]).to.equal("expected spy to have been called exactly twice")
+
+            it "handles thrice", ->
+                spy = sinon.spy()
+                spy()
+                spy()
+                spy()
+                spy.should.have.been.calledThrice
+                expect(@messages[0]).to.equal("expected spy to have been called exactly thrice")
+
+            it "handles arbitrary call count", ->
+                spy = sinon.spy()
+                spy()
+                spy()
+                spy()
+                spy()
+                spy.should.have.callCount(4)
+                expect(@messages[0]).to.equal("expected spy to have been called exactly 4 times")
+
     describe "about call order", ->
         it "should be correct for the base cases", ->
             spyA = sinon.spy()
@@ -149,18 +197,18 @@ describe "Messages", ->
             spy(1, 2, 3)
 
             expect(-> spy.should.have.been.calledWith("a", "b", "c")).to
-                .throw("expected spy to have been called with arguments a, b, c\n    spy(1, 2, 3)")
+                .throw("xpected spy to have been called with arguments a, b, c\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
             expect(-> spy.should.have.been.calledWithExactly("a", "b", "c")).to
-                .throw("expected spy to have been called with exact arguments a, b, c\n    spy(1, 2, 3)")
+                .throw("expected spy to have been called with exact arguments a, b, c\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
             expect(-> spy.should.have.been.calledWithMatch(sinon.match("foo"))).to
-                .throw("expected spy to have been called with arguments matching match(\"foo\")\n    spy(1, 2, 3)")
+                .throw("expected spy to have been called with arguments matching match(\"foo\")\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
 
             expect(-> spy.getCall(0).should.have.been.calledWith("a", "b", "c")).to
-                .throw("expected spy to have been called with arguments a, b, c\n    spy(1, 2, 3)")
+                .throw("expected spy to have been called with arguments a, b, c\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
             expect(-> spy.getCall(0).should.have.been.calledWithExactly("a", "b", "c")).to
-                .throw("expected spy to have been called with exact arguments a, b, c\n    spy(1, 2, 3)")
+                .throw("expected spy to have been called with exact arguments a, b, c\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
             expect(-> spy.getCall(0).should.have.been.calledWithMatch(sinon.match("foo"))).to
-                .throw("expected spy to have been called with arguments matching match(\"foo\")\n    spy(1, 2, 3)")
+                .throw("expected spy to have been called with arguments matching match(\"foo\")\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
 
         it "should be correct for the negated cases", ->
             spy = sinon.spy()
