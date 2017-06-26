@@ -1,6 +1,6 @@
 {
-  "name": "sinon-chai",
-  "description": "Extends Chai with assertions for the Sinon.JS mocking framework.",
+  "name": "@cypress/sinon-chai",
+  "description": "Extends Chai with assertions for the Sinon.JS mocking framework, compatible with Cypress.io",
   "keywords": [
     "chai",
     "chai-plugin",
@@ -28,7 +28,8 @@
     "test-chai-2-3-0": "npm install chai@2.3.0 && mocha",
     "test-chai-3-0-0": "npm install chai@3.0.0 && mocha",
     "lint": "jshint ./lib",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha && opener ./coverage/lcov-report/lib/sinon-chai.js.html"
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha && opener ./coverage/lcov-report/lib/sinon-chai.js.html",
+    "commit": "commit-wizard"
   },
   "peerDependencies": {
     "chai": ">=1.9.2 <4",
@@ -37,10 +38,27 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "coffee-script": "~1.8.0",
+    "condition-circle": "^1.5.0",
     "istanbul": "~0.3.2",
     "jshint": "^2.5.6",
     "mocha": "^1.21.4",
     "opener": "^1.4.0",
+    "pre-git": "^3.15.0",
+    "simple-commit-message": "^3.0.2",
     "sinon": "^1.10.3"
+  },
+  "release": {
+    "verifyConditions": "condition-circle",
+    "analyzeCommits": "simple-commit-message"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "simple",
+      "pre-commit": [],
+      "pre-push": [],
+      "post-commit": [],
+      "post-checkout": [],
+      "post-merge": []
+    }
   }
 }

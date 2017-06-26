@@ -1,5 +1,7 @@
 # Sinon.JS Assertions for Chai
 
+[![semantic-release][semantic-image] ][semantic-url]
+
 **Sinon–Chai** provides a set of custom assertions for using the [Sinon.JS][] spy, stub, and mocking framework with the
 [Chai][] assertion library. You get all the benefits of Chai with all the powerful tools of Sinon.JS.
 
@@ -246,3 +248,6 @@ Thanks to [Cymen Vig][], there's now [a Ruby gem][] of Sinon–Chai that integra
 [AMD]: https://github.com/amdjs/amdjs-api/wiki/AMD
 [Cymen Vig]: https://github.com/cymen
 [a Ruby gem]: https://github.com/cymen/sinon-chai-rails
+
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-url]: https://github.com/semantic-release/semantic-release
