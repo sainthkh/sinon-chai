@@ -1,5 +1,6 @@
 # Sinon.JS Assertions for Chai
 
+[![CircleCI](https://circleci.com/gh/cypress-io/sinon-chai.svg?style=svg)](https://circleci.com/gh/cypress-io/sinon-chai)
 [![semantic-release][semantic-image] ][semantic-url]
 
 **Sinon–Chai** provides a set of custom assertions for using the [Sinon.JS][] spy, stub, and mocking framework with the
