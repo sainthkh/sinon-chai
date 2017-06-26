@@ -13,7 +13,7 @@
     "stubs",
     "mocks"
   ],
-  "version": "2.8.0",
+  "version": "0.0.0-development",
   "author": "Domenic Denicola <d@domenic.me> (https://domenic.me/)",
   "license": "(BSD-2-Clause OR WTFPL)",
   "repository": "domenic/sinon-chai",
@@ -22,6 +22,7 @@
     "lib"
   ],
   "scripts": {
+    "pretest": "npm run lint",
     "test": "npm run test-chai-1-9-2 && npm run test-chai-2-3-0 && npm run test-chai-3-0-0",
     "test-current-chai": "mocha",
     "test-chai-1-9-2": "npm install chai@1.9.2 && mocha",
@@ -29,7 +30,8 @@
     "test-chai-3-0-0": "npm install chai@3.0.0 && mocha",
     "lint": "jshint ./lib",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha && opener ./coverage/lcov-report/lib/sinon-chai.js.html",
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "peerDependencies": {
     "chai": ">=1.9.2 <4",
@@ -45,7 +47,8 @@
     "opener": "^1.4.0",
     "pre-git": "^3.15.0",
     "simple-commit-message": "^3.0.2",
-    "sinon": "^1.10.3"
+    "sinon": "^1.10.3",
+    "semantic-release": "^6.3.6"
   },
   "release": {
     "verifyConditions": "condition-circle",
