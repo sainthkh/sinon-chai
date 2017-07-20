@@ -10,16 +10,16 @@ describe "Messages", ->
             expect(-> spy.should.have.been.called).to
                 .throw("expected spy to have been called at least once, but it was never called")
             expect(-> spy.should.have.been.calledOnce).to
-                .throw("expected spy to have been called exactly once, but it was called 0 times")
+                .throw("expected spy to have been called exactly once, but it was never called")
             expect(-> spy.should.have.been.calledTwice).to
-                .throw("expected spy to have been called exactly twice, but it was called 0 times")
+                .throw("expected spy to have been called exactly twice, but it was never called")
             expect(-> spy.should.have.been.calledThrice).to
-                .throw("expected spy to have been called exactly thrice, but it was called 0 times")
+                .throw("expected spy to have been called exactly thrice, but it was never called")
 
             expect(-> spy.should.have.callCount(1)).to
-                .throw("expected spy to have been called exactly once, but it was called 0 times")
+                .throw("expected spy to have been called exactly once, but it was never called")
             expect(-> spy.should.have.callCount(4)).to
-                .throw("expected spy to have been called exactly 4 times, but it was called 0 times")
+                .throw("expected spy to have been called exactly 4 times, but it was never called")
 
         it "should be correct for the negated cases", ->
             calledOnce = sinon.spy()
@@ -131,6 +131,7 @@ describe "Messages", ->
     describe "about call context", ->
         it "should be correct for the basic case", ->
             spy = sinon.spy()
+            spyNotCalled = sinon.spy()
             context = {}
             badContext = { x: "y" }
 
@@ -139,6 +140,7 @@ describe "Messages", ->
             expected = "expected spy to have been called with {  } as this, but it was called with " +
                 spy.printf("%t") + " instead"
             expect(-> spy.should.have.been.calledOn(context)).to.throw(expected)
+            expect(-> spyNotCalled.should.have.been.calledOn(context)).to.throw("expected spy to have been called with {  } as this, but it was never called")
             expect(-> spy.getCall(0).should.have.been.calledOn(context)).to.throw(expected)
 
         it "should be correct for the negated case", ->
@@ -193,6 +195,7 @@ describe "Messages", ->
     describe "about call arguments", ->
         it "should be correct for the basic cases", ->
             spy = sinon.spy()
+            spyNotCalled = sinon.spy()
 
             spy(1, 2, 3)
 
@@ -209,6 +212,19 @@ describe "Messages", ->
                 .throw("expected spy to have been called with exact arguments a, b, c\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
             expect(-> spy.getCall(0).should.have.been.calledWithMatch(sinon.match("foo"))).to
                 .throw("expected spy to have been called with arguments matching match(\"foo\")\n\n    The following calls were made:\n\n    spy(1, 2, 3)")
+
+            expect(-> spyNotCalled.should.have.been.calledWith("a", "b", "c")).to
+                .throw("expected spy to have been called with arguments a, b, c, but it was never called")
+            expect(-> spyNotCalled.should.have.been.calledWith("a", "b", "c")).not.to
+                .throw("The following calls")
+            expect(-> spyNotCalled.should.have.been.calledWithExactly("a", "b", "c")).to
+                .throw("expected spy to have been called with exact arguments a, b, c, but it was never called")
+            expect(-> spyNotCalled.should.have.been.calledWithExactly("a", "b", "c")).not.to
+                .throw("The following calls")
+            expect(-> spyNotCalled.should.have.been.calledWithMatch(sinon.match("foo"))).to
+                .throw("expected spy to have been called with arguments matching match(\"foo\"), but it was never called")
+            expect(-> spyNotCalled.should.have.been.calledWithMatch(sinon.match("foo"))).not.to
+                .throw("The following calls")
 
         it "should be correct for the negated cases", ->
             spy = sinon.spy()
@@ -249,10 +265,12 @@ describe "Messages", ->
     describe "about returning", ->
         it "should be correct for the basic case", ->
             spy = sinon.spy.create(-> 1)
+            spyNotCalled = sinon.spy.create(-> 1)
 
             spy()
 
             expect(-> spy.should.have.returned(2)).to.throw("expected spy to have returned 2")
+            expect(-> spyNotCalled.should.have.returned(2)).to.throw("expected spy to have returned 2, but it was never called")
             expect(-> spy.getCall(0).should.have.returned(2)).to.throw("expected spy to have returned 2")
 
         it "should be correct for the negated case", ->
