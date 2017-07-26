@@ -23,32 +23,29 @@
   ],
   "scripts": {
     "pretest": "npm run lint",
-    "test": "npm run test-chai-1-9-2 && npm run test-chai-2-3-0 && npm run test-chai-3-0-0",
-    "test-current-chai": "mocha",
-    "test-chai-1-9-2": "npm install chai@1.9.2 && mocha",
-    "test-chai-2-3-0": "npm install chai@2.3.0 && mocha",
-    "test-chai-3-0-0": "npm install chai@3.0.0 && mocha",
-    "lint": "jshint ./lib",
+    "test": "mocha",
+    "test-travis": "npm install chai@$CHAI_VERSION && npm install sinon@$SINON_VERSION && npm test",
+    "lint": "eslint .",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha && opener ./coverage/lcov-report/lib/sinon-chai.js.html",
     "commit": "commit-wizard",
     "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
   },
   "peerDependencies": {
-    "chai": ">=1.9.2 <4",
-    "sinon": ">=1.4.0 <2"
+    "chai": ">=1.9.2 <5",
+    "sinon": "^1.4.0 || ^2.1.0"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
+    "chai": "^4.0.2",
     "coffee-script": "~1.8.0",
     "condition-circle": "^1.5.0",
-    "istanbul": "~0.3.2",
-    "jshint": "^2.5.6",
-    "mocha": "^1.21.4",
-    "opener": "^1.4.0",
+    "eslint": "^3.19.0",
+    "istanbul": "~0.4.5",
+    "mocha": "^3.4.2",
+    "opener": "^1.4.3",
     "pre-git": "^3.15.0",
-    "simple-commit-message": "^3.0.2",
-    "sinon": "^1.10.3",
-    "semantic-release": "^6.3.6"
+    "semantic-release": "^6.3.6",
+    "sinon": "^2.3.4",
+    "simple-commit-message": "^3.0.2"
   },
   "release": {
     "verifyConditions": "condition-circle",
