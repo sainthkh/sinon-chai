@@ -30,10 +30,6 @@
     "commit": "commit-wizard",
     "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
   },
-  "peerDependencies": {
-    "chai": ">=1.9.2 <5",
-    "sinon": "^1.4.0 || ^2.1.0"
-  },
   "devDependencies": {
     "chai": "^4.0.2",
     "coffee-script": "~1.8.0",
