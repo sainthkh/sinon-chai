@@ -28,7 +28,7 @@
     "lint": "eslint .",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha && opener ./coverage/lcov-report/lib/sinon-chai.js.html",
     "commit": "commit-wizard",
-    "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "chai": "^4.0.2",
@@ -39,7 +39,7 @@
     "mocha": "^3.4.2",
     "opener": "^1.4.3",
     "pre-git": "^3.15.0",
-    "semantic-release": "^6.3.6",
+    "semantic-release": "^15.13.16",
     "sinon": "^2.3.4",
     "simple-commit-message": "^3.0.2"
   },
