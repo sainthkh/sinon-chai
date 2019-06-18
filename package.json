@@ -31,12 +31,12 @@
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
-    "chai": "^4.0.2",
-    "coffee-script": "~1.8.0",
+    "chai": "4.2.0",
+    "coffee-script": "1.8.0",
     "eslint": "^3.19.0",
     "istanbul": "~0.4.5",
-    "mocha": "^3.4.2",
-    "opener": "^1.4.3",
+    "mocha": "6.1.4",
+    "opener": "1.5.1",
     "semantic-release": "^15.13.16",
     "sinon": "^2.3.4"
   }
