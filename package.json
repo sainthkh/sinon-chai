@@ -33,30 +33,11 @@
   "devDependencies": {
     "chai": "^4.0.2",
     "coffee-script": "~1.8.0",
-    "condition-circle": "^1.5.0",
     "eslint": "^3.19.0",
     "istanbul": "~0.4.5",
     "mocha": "^3.4.2",
     "opener": "^1.4.3",
-    "pre-git": "^3.15.0",
     "semantic-release": "^15.13.16",
-    "sinon": "^2.3.4",
-    "simple-commit-message": "^3.0.2"
-  },
-  "release": {
-    "verifyConditions": "condition-circle",
-    "analyzeCommits": "simple-commit-message"
-  },
-  "config": {
-    "pre-git": {
-      "commit-msg": "simple",
-      "pre-commit": [
-        "npm test"
-      ],
-      "pre-push": [],
-      "post-commit": [],
-      "post-checkout": [],
-      "post-merge": []
-    }
+    "sinon": "^2.3.4"
   }
 }
