@@ -535,9 +535,9 @@ describe("Messages", function () {
                 err = e;
             }
             expect(err).ok;
-            expect(err).to.ownProperty("showDiff", true);
-            expect(err).to.ownProperty("actual").deep.eq(["foo1"]);
-            expect(err).to.ownProperty("expected").deep.eq(["bar"]);
+            expect(err).property("showDiff", true);
+            expect(err).property("actual").deep.eq(["foo1"]);
+            expect(err).property("expected").deep.eq(["bar"]);
         });
 
         it("should use lastCall args if exists", function () {
@@ -553,9 +553,9 @@ describe("Messages", function () {
                 err = e;
             }
             expect(err).ok;
-            expect(err).to.ownProperty("showDiff", true);
-            expect(err).to.ownProperty("actual").deep.eq(["foo2"]);
-            expect(err).to.ownProperty("expected").deep.eq(["bar"]);
+            expect(err).property("showDiff", true);
+            expect(err).property("actual").deep.eq(["foo2"]);
+            expect(err).property("expected").deep.eq(["bar"]);
         });
 
         it("should use args if no lastCall", function () {
@@ -571,9 +571,9 @@ describe("Messages", function () {
                 err = e;
             }
             expect(err).ok;
-            expect(err).to.ownProperty("showDiff", true);
-            expect(err).to.ownProperty("actual").deep.eq(["foo1"]);
-            expect(err).to.ownProperty("expected").deep.eq(["bar"]);
+            expect(err).property("showDiff", true);
+            expect(err).property("actual").deep.eq(["foo1"]);
+            expect(err).property("expected").deep.eq(["bar"]);
         });
 
         it("should use undefined if no call", function () {
@@ -587,9 +587,9 @@ describe("Messages", function () {
                 err = e;
             }
             expect(err).ok;
-            expect(err).to.ownProperty("showDiff", true);
-            expect(err).to.ownProperty("actual").deep.eq(undefined);
-            expect(err).to.ownProperty("expected").deep.eq(["bar"]);
+            expect(err).property("showDiff", true);
+            expect(err).property("actual").deep.eq(undefined);
+            expect(err).property("expected").deep.eq(["bar"]);
         });
 
         it("should not add actual/expected and set enableDiff to true if passes", function () {
@@ -617,7 +617,7 @@ describe("Messages", function () {
             } catch (e) {
                 err = e;
             }
-            expect(err).ownProperty("showDiff").eq(false);
+            expect(err).property("showDiff").eq(false);
         });
     });
 
