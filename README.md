@@ -1,7 +1,6 @@
 # Sinon.JS Assertions for Chai
 
-[![CircleCI](https://circleci.com/gh/cypress-io/sinon-chai.svg?style=svg)](https://circleci.com/gh/cypress-io/sinon-chai)
-[![semantic-release][semantic-image] ][semantic-url]
+[![renovate-app badge][renovate-badge]][renovate-app] [![semantic-release][semantic-image] ][semantic-url] [![CircleCI](https://circleci.com/gh/cypress-io/sinon-chai.svg?style=svg)](https://circleci.com/gh/cypress-io/sinon-chai)
 
 **Sinon–Chai** provides a set of custom assertions for using the [Sinon.JS][] spy, stub, and mocking framework with the
 [Chai][] assertion library. You get all the benefits of Chai with all the powerful tools of Sinon.JS.
@@ -260,3 +259,5 @@ Thanks to [Cymen Vig][], there's now [a Ruby gem][] of Sinon–Chai that integra
 
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
