@@ -16,7 +16,7 @@
   "version": "0.0.0-development",
   "author": "Domenic Denicola <d@domenic.me> (https://domenic.me/)",
   "license": "(BSD-2-Clause OR WTFPL)",
-  "repository": "domenic/sinon-chai",
+  "repository": "cypress-io/sinon-chai",
   "main": "./lib/sinon-chai.js",
   "files": [
     "lib"
