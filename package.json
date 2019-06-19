@@ -33,11 +33,11 @@
   "devDependencies": {
     "chai": "4.2.0",
     "coffee-script": "1.8.0",
-    "eslint": "^3.19.0",
-    "istanbul": "~0.4.5",
+    "eslint": "3.19.0",
+    "istanbul": "0.4.5",
     "mocha": "6.1.4",
     "opener": "1.5.1",
-    "semantic-release": "^15.13.16",
+    "semantic-release": "15.13.16",
     "sinon": "5.0.2"
   }
 }
