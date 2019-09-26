@@ -8,6 +8,7 @@ jobs:
       - run: npm ci
       - run: npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
       - run: npm whoami
+      - run: npm t
       - run: npm run semantic-release || true
 
 workflows:
